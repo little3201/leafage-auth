@@ -3,12 +3,12 @@ package io.leafage.leafage.auth.domain;
 import javax.persistence.*;
 
 /**
- * Model class for User
+ * Model class for Account
  *
- * @author liwenqiang
+ * @author liwenqiang 2021-12-21 17:44
  */
 @Entity
-@Table(name = "user")
+@Table(name = "account")
 public class Account {
 
     /**
@@ -22,17 +22,17 @@ public class Account {
      */
     private String username;
     /**
+     * 昵称
+     */
+    private String nickname;
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
      * 密码
      */
     private String password;
-    /**
-     * 电话
-     */
-    private String phone;
-    /**
-     * 邮箱
-     */
-    private String email;
     /**
      * 是否可用
      */
@@ -70,28 +70,28 @@ public class Account {
         this.username = username;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public boolean isEnabled() {

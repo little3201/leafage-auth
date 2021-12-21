@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author liwenqiang 2021-12-21 17:02
  */
 @Repository
-public interface UserRepository extends JpaRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
     /**
      * 根据 username 查询

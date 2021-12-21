@@ -74,3 +74,28 @@ create table oauth_authorization_consent
 );
 
 alter table oauth_authorization_consent comment '认证内容';
+
+
+drop table if exists account;
+
+/*==============================================================*/
+/* Table: account                                               */
+/*==============================================================*/
+create table account
+(
+   id                   bigint unsigned not null auto_increment comment '主键',
+   username             varchar(16) not null comment '账号',
+   nickname             varchar(64) comment '昵称',
+   avatar               varchar(127) comment '头像',
+   password             varchar(127) comment '密码',
+   is_account_non_expired tinyint(1) default 1 comment '是否有效',
+   is_account_non_locked tinyint(1) default 1 comment '是否未锁定',
+   is_credentials_non_expired tinyint(1) default 1 comment '是否密码有效',
+   is_enabled           tinyint(1) default 1 comment '是否可用',
+   modifier             varchar(16) comment '修改人',
+   modify_time          datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   primary key (id),
+   unique key AK_username (username)
+);
+
+alter table account comment '账户';
