@@ -22,6 +22,11 @@ import org.springframework.security.oauth2.server.authorization.config.ProviderS
 import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
+/**
+ * 认证服务配置
+ *
+ * @author liwenqiang 2021-12-21 17:02
+ */
 @Configuration
 public class AuthorizationServerConfiguration {
 

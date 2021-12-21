@@ -28,8 +28,9 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 /**
- * @author Joe Grandja
- * @since 0.1.0
+ * jwks
+ *
+ * @author liwenqiang 2021-12-21 17:02
  */
 public final class Jwks {
 
