@@ -2,11 +2,10 @@ package io.leafage.leafage.auth.service;
 
 import io.leafage.leafage.auth.domain.Account;
 import io.leafage.leafage.auth.domain.Role;
-import io.leafage.leafage.auth.domain.UserRole;
+import io.leafage.leafage.auth.domain.AccountRole;
 import io.leafage.leafage.auth.repository.AccountRepository;
 import io.leafage.leafage.auth.repository.RoleRepository;
 import io.leafage.leafage.auth.repository.UserRoleRepository;
-import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,13 +44,13 @@ public class JdbcUserDetailsService implements UserDetailsService {
         if (null == account) {
             throw new UsernameNotFoundException("user not found.");
         }
-        List<UserRole> userRoles = userRoleRepository.findByUserId(account.getId());
-        if (CollectionUtils.isEmpty(userRoles)) {
+        List<AccountRole> accountRoles = userRoleRepository.findByUserId(account.getId());
+        if (CollectionUtils.isEmpty(accountRoles)) {
             throw new AuthenticationServiceException("user not authorization.");
         }
         // 检查角色是否配置
-        List<Role> roles = userRoles.stream().map(userRole ->
-                        roleRepository.findById(userRole.getRoleId()).orElse(null))
+        List<Role> roles = accountRoles.stream().map(accountRole ->
+                        roleRepository.findById(accountRole.getRoleId()).orElse(null))
                 .filter(Objects::nonNull).collect(Collectors.toList());
 
         Set<GrantedAuthority> authorities = roles.stream().map(role ->

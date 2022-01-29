@@ -9,7 +9,7 @@ import javax.persistence.Table;
 /**
  * Model class for Role
  *
- * @author liwenqiang
+ * @author liwenqiang 2021-12-21 17:44
  */
 @Entity
 @Table(name = "role")

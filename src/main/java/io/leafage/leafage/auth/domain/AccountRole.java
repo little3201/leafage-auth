@@ -10,11 +10,11 @@ import javax.persistence.Table;
 /**
  * Model class for User Role
  *
- * @author liwenqiang
+ * @author liwenqiang 2021-12-21 17:44
  */
 @Entity
-@Table(name = "user_role")
-public class UserRole {
+@Table(name = "account_role")
+public class AccountRole {
 
     /**
      * 用户主键
