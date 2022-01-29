@@ -1,6 +1,6 @@
-package io.leafage.leafage.auth.repository;
+package io.leafage.auth.repository;
 
-import io.leafage.leafage.auth.domain.Account;
+import io.leafage.auth.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

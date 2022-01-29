@@ -1,4 +1,4 @@
-package io.leafage.leafage.auth.domain;
+package io.leafage.auth.domain;
 
 import javax.persistence.*;
 

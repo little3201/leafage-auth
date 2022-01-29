@@ -1,11 +1,11 @@
-package io.leafage.leafage.auth.service;
+package io.leafage.auth.service;
 
-import io.leafage.leafage.auth.domain.Account;
-import io.leafage.leafage.auth.domain.Role;
-import io.leafage.leafage.auth.domain.AccountRole;
-import io.leafage.leafage.auth.repository.AccountRepository;
-import io.leafage.leafage.auth.repository.RoleRepository;
-import io.leafage.leafage.auth.repository.UserRoleRepository;
+import io.leafage.auth.repository.UserRoleRepository;
+import io.leafage.auth.domain.Account;
+import io.leafage.auth.domain.Role;
+import io.leafage.auth.domain.AccountRole;
+import io.leafage.auth.repository.AccountRepository;
+import io.leafage.auth.repository.RoleRepository;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

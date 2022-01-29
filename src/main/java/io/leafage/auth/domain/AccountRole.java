@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021. Leafage All Right Reserved.
  */
-package io.leafage.leafage.auth.domain;
+package io.leafage.auth.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
