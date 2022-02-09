@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role extends AbstractEntity {
 
     /**
      * 代码

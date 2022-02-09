@@ -1,6 +1,9 @@
 package io.leafage.auth.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 /**
  * Model class for Account
@@ -9,14 +12,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "account")
-public class Account {
+public class Account extends AbstractEntity {
 
-    /**
-     * 主键
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     /**
      * 账户
      */
@@ -34,33 +31,21 @@ public class Account {
      */
     private String password;
     /**
-     * 是否可用
+     * 账号有效期
      */
-    @Column(name = "is_enabled")
-    private boolean enabled = true;
+    @Column(name = "account_expires_at")
+    private LocalDateTime accountExpiresAt;
     /**
-     * 是否无效
+     * 是否锁定
      */
-    @Column(name = "is_account_non_expired")
-    private boolean accountNonExpired = true;
+    @Column(name = "is_account_locked")
+    private boolean accountLocked;
     /**
-     * 是否没有锁定
+     * 密码有效期
      */
-    @Column(name = "is_account_non_locked")
-    private boolean accountNonLocked = true;
-    /**
-     * 密码是否有效
-     */
-    @Column(name = "is_credentials_non_expired")
-    private boolean credentialsNonExpired = true;
+    @Column(name = "credentials_expires_at")
+    private LocalDateTime credentialsExpiresAt;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -94,35 +79,28 @@ public class Account {
         this.password = password;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public LocalDateTime getAccountExpiresAt() {
+        return accountExpiresAt;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setAccountExpiresAt(LocalDateTime accountExpiresAt) {
+        this.accountExpiresAt = accountExpiresAt;
     }
 
-    public boolean isAccountNonExpired() {
-        return accountNonExpired;
+    public boolean isAccountLocked() {
+        return accountLocked;
     }
 
-    public void setAccountNonExpired(boolean accountNonExpired) {
-        this.accountNonExpired = accountNonExpired;
+    public void setAccountLocked(boolean accountLocked) {
+        this.accountLocked = accountLocked;
     }
 
-    public boolean isAccountNonLocked() {
-        return accountNonLocked;
+    public LocalDateTime getCredentialsExpiresAt() {
+        return credentialsExpiresAt;
     }
 
-    public void setAccountNonLocked(boolean accountNonLocked) {
-        this.accountNonLocked = accountNonLocked;
+    public void setCredentialsExpiresAt(LocalDateTime credentialsExpiresAt) {
+        this.credentialsExpiresAt = credentialsExpiresAt;
     }
 
-    public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
-
-    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
 }

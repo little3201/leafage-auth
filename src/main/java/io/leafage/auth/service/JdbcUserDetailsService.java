@@ -1,11 +1,11 @@
 package io.leafage.auth.service;
 
-import io.leafage.auth.repository.UserRoleRepository;
 import io.leafage.auth.domain.Account;
-import io.leafage.auth.domain.Role;
 import io.leafage.auth.domain.AccountRole;
+import io.leafage.auth.domain.Role;
 import io.leafage.auth.repository.AccountRepository;
 import io.leafage.auth.repository.RoleRepository;
+import io.leafage.auth.repository.UserRoleRepository;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -56,7 +57,11 @@ public class JdbcUserDetailsService implements UserDetailsService {
         Set<GrantedAuthority> authorities = roles.stream().map(role ->
                 new SimpleGrantedAuthority(role.getCode())).collect(Collectors.toSet());
 
-        return new User(account.getUsername(), account.getPassword(), account.isEnabled(), account.isAccountNonExpired(),
-                account.isCredentialsNonExpired(), account.isAccountNonLocked(), authorities);
+        LocalDateTime now = LocalDateTime.now();
+        boolean isAccountNonExpired = account.getAccountExpiresAt().isAfter(now);
+        boolean isCredentialsNonExpired = account.getCredentialsExpiresAt().isAfter(now);
+
+        return new User(account.getUsername(), account.getPassword(), account.isEnabled(), isAccountNonExpired,
+                isCredentialsNonExpired, !account.isAccountLocked(), authorities);
     }
 }
