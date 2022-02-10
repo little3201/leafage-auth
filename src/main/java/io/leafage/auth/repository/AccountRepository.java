@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * jdbc 用户服务接口
+ * account repository
  *
- * @author liwenqiang 2021-12-21 17:02
+ * @author liwenqiang 2021-12-21 17:44
  */
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {

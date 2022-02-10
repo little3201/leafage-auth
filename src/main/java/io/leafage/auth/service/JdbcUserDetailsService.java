@@ -5,7 +5,7 @@ import io.leafage.auth.domain.AccountRole;
 import io.leafage.auth.domain.Role;
 import io.leafage.auth.repository.AccountRepository;
 import io.leafage.auth.repository.RoleRepository;
-import io.leafage.auth.repository.UserRoleRepository;
+import io.leafage.auth.repository.AccountRoleRepository;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * jdbc 用户服务接口
+ * userDetailsService
  *
  * @author liwenqiang 2021-12-21 17:02
  */
@@ -30,12 +30,12 @@ import java.util.stream.Collectors;
 public class JdbcUserDetailsService implements UserDetailsService {
 
     private final AccountRepository accountRepository;
-    private final UserRoleRepository userRoleRepository;
+    private final AccountRoleRepository accountRoleRepository;
     private final RoleRepository roleRepository;
 
-    public JdbcUserDetailsService(AccountRepository accountRepository, UserRoleRepository userRoleRepository, RoleRepository roleRepository) {
+    public JdbcUserDetailsService(AccountRepository accountRepository, AccountRoleRepository accountRoleRepository, RoleRepository roleRepository) {
         this.accountRepository = accountRepository;
-        this.userRoleRepository = userRoleRepository;
+        this.accountRoleRepository = accountRoleRepository;
         this.roleRepository = roleRepository;
     }
 
@@ -45,7 +45,7 @@ public class JdbcUserDetailsService implements UserDetailsService {
         if (null == account) {
             throw new UsernameNotFoundException("user not found.");
         }
-        List<AccountRole> accountRoles = userRoleRepository.findByUserId(account.getId());
+        List<AccountRole> accountRoles = accountRoleRepository.findByAccountId(account.getId());
         if (CollectionUtils.isEmpty(accountRoles)) {
             throw new AuthenticationServiceException("user not authorization.");
         }

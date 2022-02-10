@@ -88,9 +88,9 @@ create table account
    nickname             varchar(64) comment '昵称',
    avatar               varchar(127) comment '头像',
    password             varchar(127) comment '密码',
-   is_account_non_expired tinyint(1) default 1 comment '是否有效',
-   is_account_non_locked tinyint(1) default 1 comment '是否未锁定',
-   is_credentials_non_expired tinyint(1) default 1 comment '是否密码有效',
+   account_expires_at   datetime default '1' comment '有效期',
+   is_account_locked    tinyint(1) default 1 comment '是否锁定',
+   credentials_expires_at datetime default '1' comment '密码有效期',
    is_enabled           tinyint(1) default 1 comment '是否可用',
    modifier             varchar(16) comment '修改人',
    modify_time          datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
@@ -99,3 +99,4 @@ create table account
 );
 
 alter table account comment '账户';
+
