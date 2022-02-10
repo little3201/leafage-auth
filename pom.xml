@@ -15,6 +15,11 @@
     <name>leafage-auth</name>
     <description>auth of leafage</description>
 
+    <properties>
+        <sonar.organization>little3201</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
