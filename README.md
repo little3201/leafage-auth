@@ -3,8 +3,8 @@
 <p align="center">
  <img src="https://img.shields.io/badge/Spring%20Cloud-2021.0.0-green.svg" alt="Coverage Status">
  <img src="https://img.shields.io/badge/Spring%20Boot-2.6.1-green.svg" alt="Downloads">
- <img src="https://sonarcloud.io/api/project_badges/measure?project=little3201_leafage-basic&metric=alert_status" alt="Quality Gate Status">
- <img src="https://sonarcloud.io/api/project_badges/measure?project=little3201_leafage-basic&metric=coverage"/>
+ <img src="https://sonarcloud.io/api/project_badges/measure?project=little3201_leafage-auth&metric=alert_status" alt="Quality Gate Status">
+ <img src="https://sonarcloud.io/api/project_badges/measure?project=little3201_leafage-auth&metric=coverage"/>
 </p>
 
 ### 依赖
